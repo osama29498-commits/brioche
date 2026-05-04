@@ -1,0 +1,115 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بريوش المذاق</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #111;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+header {
+    background: black;
+    padding: 20px;
+    font-size: 28px;
+    color: gold;
+}
+.menu {
+    padding: 20px;
+}
+.item {
+    background: #222;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+}
+button {
+    background: gold;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+form {
+    padding: 20px;
+}
+input, textarea, select {
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+}
+.send {
+    background: green;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>🥐 بريوش المذاق</header>
+
+<div class="menu">
+<h2>المنيو</h2>
+
+<div class="item">بريوش نوتيلا - 8 دينار</div>
+<div class="item">بريوش هزل - 5 دينار</div>
+<div class="item">بريوش فيلادلفيا - 7 دينار</div>
+<div class="item">بريوش بستاشيو - 7 دينار</div>
+<div class="item">كريب نوتيلا - 17 دينار</div>
+<div class="item">فروبي فراولة - 7 دينار</div>
+<div class="item">ميلك شيك نوتيلا - 14 دينار</div>
+
+</div>
+
+<h2>اطلب الآن</h2>
+
+<form onsubmit="sendToWhatsApp(); return false;">
+<input type="text" id="name" placeholder="الاسم" required>
+<input type="text" id="phone" placeholder="رقم الهاتف" required>
+
+<select id="type">
+<option>استلام من المحل</option>
+<option>توصيل</option>
+</select>
+
+<textarea id="order" placeholder="اكتب طلبك هنا"></textarea>
+<input type="text" id="address" placeholder="العنوان">
+
+<textarea id="note" placeholder="ملاحظات"></textarea>
+
+<button class="send">إرسال الطلب</button>
+</form>
+
+<script>
+function sendToWhatsApp() {
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let type = document.getElementById("type").value;
+let order = document.getElementById("order").value;
+let address = document.getElementById("address").value;
+let note = document.getElementById("note").value;
+
+let message = `طلب جديد من موقع بريوش المذاق:%0A
+الاسم: ${name}%0A
+رقم الهاتف: ${phone}%0A
+نوع الطلب: ${type}%0A
+الطلب: ${order}%0A
+العنوان: ${address}%0A
+ملاحظات: ${note}`;
+
+window.open(`https://wa.me/218926609199?text=${message}`);
+}
+</script>
+
+</body>
+</html>
